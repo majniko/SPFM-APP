@@ -1,7 +1,6 @@
 {
   "cli": {
-    "version": ">= 5.9.3",
-    "appVersionSource": "local"
+    "version": ">= 7.6.0"
   },
   "build": {
     "development": {
@@ -9,7 +8,13 @@
       "distribution": "internal"
     },
     "preview": {
-      "distribution": "internal"
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      },
+      "env": {
+        "ANDROID_HOME": "/mnt/c/Users/majniko/AppData/Local/Android/Sdk"
+      }
     },
     "production": {}
   },
