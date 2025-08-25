@@ -11,9 +11,6 @@
       "distribution": "internal",
       "android": {
         "buildType": "apk"
-      },
-      "env": {
-        "ANDROID_HOME": "/mnt/c/Users/majniko/AppData/Local/Android/Sdk"
       }
     },
     "production": {}
