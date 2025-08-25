@@ -10,6 +10,7 @@ type InputProps = {
   secureTextEntry?: boolean;
   keyboardType?: KeyboardTypeOptions;
   autoCapitalize?: 'none' | 'sentences' | 'words' | 'characters';
+  disabled?: boolean;
 };
 
 export const Input = ({
@@ -19,6 +20,7 @@ export const Input = ({
   secureTextEntry,
   keyboardType,
   autoCapitalize = 'none',
+  disabled = false,
 }: InputProps) => {
   return (
     <TextInput
@@ -30,6 +32,7 @@ export const Input = ({
       autoCapitalize={autoCapitalize}
       keyboardType={keyboardType}
       placeholderTextColor={Colors.grey}
+      editable={!disabled}
     />
   );
 };

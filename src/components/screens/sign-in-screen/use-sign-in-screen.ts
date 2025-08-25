@@ -9,6 +9,7 @@ export const useSignInScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleEmailChange = useCallback(
     (text: string) => {
@@ -28,6 +29,7 @@ export const useSignInScreen = () => {
 
   const handleSignIn = useCallback(async () => {
     setError(null);
+    setIsLoading(true);
     try {
       const { access_token } = await postLogin({ username: email, password });
       await signIn(access_token);
@@ -42,6 +44,8 @@ export const useSignInScreen = () => {
         }
       }
       setError(errorMessage);
+    } finally {
+      setIsLoading(false);
     }
   }, [email, password, signIn]);
 
@@ -49,6 +53,7 @@ export const useSignInScreen = () => {
     email,
     password,
     error,
+    isLoading,
     handleEmailChange,
     handlePasswordChange,
     handleSignIn,

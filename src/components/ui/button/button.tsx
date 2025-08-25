@@ -8,6 +8,7 @@ type ButtonProps = {
   onPress?: () => void;
   children?: React.ReactNode;
   variant?: 'primary' | 'secondary' | 'icon';
+  disabled?: boolean;
 };
 
 export const Button = ({
@@ -15,6 +16,7 @@ export const Button = ({
   onPress,
   children,
   variant = 'primary',
+  disabled = false,
 }: ButtonProps) => {
   const getButtonStyles = () => {
     const style: ViewStyle[] = [styles.button];
@@ -24,11 +26,14 @@ export const Button = ({
     if (variant === 'icon') {
       style.push(styles.iconButton);
     }
+    if (disabled) {
+      style.push({ opacity: 0.5 });
+    }
     return style;
   };
 
   return (
-    <Pressable style={getButtonStyles()} onPress={onPress}>
+    <Pressable style={getButtonStyles()} onPress={onPress} disabled={disabled}>
       {children ? children : <Text style={styles.buttonText}>{title}</Text>}
     </Pressable>
   );

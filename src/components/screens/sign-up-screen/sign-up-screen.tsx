@@ -13,6 +13,7 @@ export const SignUpScreen = () => {
     email,
     password,
     error,
+    isLoading,
     handleUsernameChange,
     handleEmailChange,
     handlePasswordChange,
@@ -28,6 +29,7 @@ export const SignUpScreen = () => {
         value={username}
         onChangeText={handleUsernameChange}
         autoCapitalize="none"
+        disabled={isLoading}
       />
       <Input
         placeholder="Email"
@@ -35,17 +37,19 @@ export const SignUpScreen = () => {
         onChangeText={handleEmailChange}
         autoCapitalize="none"
         keyboardType="email-address"
+        disabled={isLoading}
       />
       <Input
         placeholder="Password"
         value={password}
         onChangeText={handlePasswordChange}
         secureTextEntry
+        disabled={isLoading}
       />
 
       {error && <Text style={styles.error}>{error}</Text>}
 
-      <Button title="Sign Up" onPress={handleSignUp} />
+      <Button title="Sign Up" onPress={handleSignUp} disabled={isLoading} />
 
       <Link href="/sign-in" style={styles.link}>
         Already have an account? Sign In

@@ -10,6 +10,7 @@ export const useSignUpScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleUsernameChange = useCallback(
     (text: string) => {
@@ -41,6 +42,7 @@ export const useSignUpScreen = () => {
       return;
     }
     setError(null);
+    setIsLoading(true);
 
     try {
       await createUser({ username, email, password });
@@ -60,6 +62,8 @@ export const useSignUpScreen = () => {
         }
       }
       setError(errorMessage);
+    } finally {
+      setIsLoading(false);
     }
   }, [username, email, password]);
 
@@ -68,6 +72,7 @@ export const useSignUpScreen = () => {
     email,
     password,
     error,
+    isLoading,
     handleUsernameChange,
     handleEmailChange,
     handlePasswordChange,
