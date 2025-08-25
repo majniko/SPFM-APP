@@ -3,9 +3,13 @@
   "compilerOptions": {
     "strict": true,
     "paths": {
-      "@/*": [
-        "./*"
-      ]
+      "@/*": ["./*"],
+      "@api/*": ["./src/api/*"],
+      "@services/*": ["./src/services/*"],
+      "@contexts/*": ["./src/contexts/*"],
+      "@colors": ["./src/styles/colors"],
+      "@screens/*": ["./src/components/screens/*"],
+      "@ui/*": ["./src/components/ui/*"]
     }
   },
   "include": [
