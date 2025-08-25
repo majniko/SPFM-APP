@@ -1,50 +1,87 @@
-# Welcome to your Expo app 👋
+# SPFM - Simple Personal Finance Manager
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A mobile application for easy and straightforward personal finance management. Track your income and expenses, categorize transactions, and get a clear overview of your financial habits.
 
-## Get started
+This is the frontend repository for the SPFM application, built with React Native and Expo.
 
-1. Install dependencies
+## Features
 
-   ```bash
-   npm install
-   ```
+-   **User Authentication**: Secure sign-up and sign-in functionality.
+-   **Transaction Management**: Add, view, and list all your financial transactions.
+-   **Expense & Income Tracking**: Easily distinguish between money coming in and money going out.
+-   **Category Management**: Organize your transactions by creating custom categories.
 
-2. Start the app
+## Tech Stack
 
-   ```bash
-   npx expo start
-   ```
+-   **Framework**: React Native with Expo
+-   **Language**: TypeScript
+-   **Navigation**: Expo Router
+-   **HTTP Client**: Axios
+-   **UI Components**: Custom-built reusable components
 
-In the output, you'll find options to open the app in a
+## Backend
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+The application relies on a custom backend service for all data operations.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+-   **Hosted API URL**: [https://spfm-be.onrender.com/api](https://spfm-be.onrender.com/api)
+-   **Backend Source Code**: [https://github.com/majniko/SPFM-BE](https://github.com/majniko/SPFM-BE)
 
-## Get a fresh project
+## 🚨 Security Warning
 
-When you're ready, run:
+**This application is for demonstration and educational purposes only.**
 
-```bash
-npm run reset-project
-```
+The backend service is currently hosted on a free-tier plan and communicates over **HTTP**, not **HTTPS**. This means that all data, including your password, is **NOT encrypted** during transmission.
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+**DO NOT use real passwords or sensitive personal details when using this application.**
 
-## Learn more
+## Getting Started
 
-To learn more about developing your project with Expo, look at the following resources:
+Follow these instructions to get a copy of the project up and running on your local machine for development and testing purposes.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+### Prerequisites
 
-## Join the community
+-   [Node.js](https://nodejs.org/) (LTS version recommended)
+-   [Expo Go](https://expo.dev/go) app installed on your iOS or Android device.
 
-Join our community of developers creating universal apps.
+### Installation & Setup
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+1.  **Clone the repository:**
+    ```sh
+    git clone <your-frontend-repo-url>
+    cd <your-frontend-repo-name>
+    ```
+
+2.  **Install dependencies:**
+    ```sh
+    npm install
+    ```
+
+3.  **Configure the API endpoint for local development:**
+
+    For the app to communicate with the backend from your physical device, you need to use your computer's local network IP address.
+
+   -   Open the `src/api/api-client.ts` file.
+   -   Find your computer's local IP address (e.g., `192.168.1.100`).
+   -   Change the `API_URL` constant to point to the backend service running on your machine:
+       ```typescript
+       // Before
+       const API_URL = 'http://192.168.0.105:3000';
+
+       // After (example)
+       const API_URL = 'http://192.168.1.100:3000';
+       ```
+    *Note: The backend must be running and accessible from your mobile device's network.*
+
+4.  **Run the application:**
+    ```sh
+    npx expo start
+    ```
+    This will start the Metro bundler. Scan the QR code with the Expo Go app on your phone to launch the application.
+
+## Pre-built APK for Android
+
+A ready-to-install `.apk` file is available for Android users. You can find it in the **[Releases](https://github.com/your-username/your-repo/releases)** section of this GitHub repository.
+
+## License
+
+This project is licensed under the MIT License - see the `LICENSE` file for details.
