@@ -10,7 +10,10 @@
     "preview": {
       "distribution": "internal",
       "android": {
-        "buildType": "apk"
+        "buildType": "apk",
+        "env": {
+          "ANDROID_HOME": "/opt/android-sdk"
+        }
       }
     },
     "production": {}
