@@ -175,3 +175,17 @@ dependencies {
         implementation jscFlavor
     }
 }
+
+tasks.whenTaskAdded { task ->
+    if (task.name == 'preBuild') {
+        task.doFirst {
+            println "--------------------"
+            println "AI ASSISTANT DEBUGGING"
+            println "ANDROID_HOME: " + System.getenv("ANDROID_HOME")
+            println "ANDROID_SDK_ROOT: " + System.getenv("ANDROID_SDK_ROOT")
+            println "USER: " + System.getProperty("user.name")
+            println "HOME: " + System.getProperty("user.home")
+            println "--------------------"
+        }
+    }
+}
